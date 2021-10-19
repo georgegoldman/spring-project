@@ -27,6 +27,8 @@ public class Session {
     )
     private List<Speaker> speakers;
 
+    // trying to get PR
+
 
     public Session() {
 
