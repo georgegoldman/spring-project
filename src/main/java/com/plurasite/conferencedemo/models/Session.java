@@ -10,7 +10,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "sessions")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +29,6 @@ public class Session {
         inverseJoinColumns = @JoinColumn(name = "speaker_id")
     )
     private List<Speaker> speakers;
-
-    // trying to get PR
-
 
     public Session() {
 
