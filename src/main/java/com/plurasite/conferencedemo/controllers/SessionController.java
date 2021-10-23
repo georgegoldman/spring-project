@@ -1,7 +1,10 @@
 package com.plurasite.conferencedemo.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.plurasite.conferencedemo.models.Session;
 import com.plurasite.conferencedemo.repositories.SessionRepository;
 
@@ -39,8 +42,12 @@ public class SessionController {
     
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
+    public Map<String, String> delete(@PathVariable Long id) {
         sessionRepository.deleteById(id);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("message", "session with "+ id +" has been deleted");
+        return map;
+        
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
